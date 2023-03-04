@@ -1,0 +1,16 @@
+# Directions #
+/build/
+/bin/
+/target/
+/.idea/
+
+# OS Files #
+.DS_Store
+
+*.class
+
+#Package Files #
+*.jar
+*.war
+*.ear
+*.db
