@@ -8,7 +8,13 @@ spring:
     username: root
     password:
 
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: create
 logging:
   level:
-    org:springframework.web :
-    ma.pfe :
+    org.springframework.web: DEBUG
+    ma.pfe: DEBUG
+    org.hibernate: ERROR

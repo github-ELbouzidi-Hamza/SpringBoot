@@ -1,5 +1,5 @@
 server :
-    port: 8081
+    port: 8089
 
 spring:
   datasource:
@@ -7,8 +7,13 @@ spring:
     url: jdbc:mysql://localhost:3306/test
     username: root
     password:
-
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: create
 logging:
   level:
-    org:springframework.web :
-    ma.pfe :
+    org.springframework.web: debug
+    ma.pfe: DEBUG
+    org.hibernate: ERROR

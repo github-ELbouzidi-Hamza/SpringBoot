@@ -1,17 +1,18 @@
 package ma.pfe.services;
 
 import ma.pfe.dto.StudentDto;
-import ma.pfe.entities.StudentEntity;
 
 import java.util.List;
 
 public interface StudentService {
 
-    StudentDto create(StudentDto dto);
+    /*StudentDto create(StudentDto dto);*/
+
+    StudentDto save(StudentDto dto);
 
     StudentDto update(StudentDto dto);
 
-    StudentDto delete(long id);
+    boolean delete(long id);
 
     List<StudentDto> selectAll();
 

@@ -1,12 +1,9 @@
-package ma.pfe.contoller;
+package ma.pfe.controllers;
 
 import ma.pfe.dto.StudentDto;
-import ma.pfe.entities.StudentEntity;
 import ma.pfe.services.StudentService;
-import ma.pfe.services.StudentServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,21 +21,21 @@ public class StudentController {
         this.service = service;
     }
 
-    @PostMapping("")
+    @PostMapping
     StudentDto create(@RequestBody StudentDto dto) {
-        LOGGER.debug("start methode create");
-        return service.create(dto);
+        LOGGER.debug("start method save dto : {} ",dto);
+        return service.save(dto);
     }
 
     @PutMapping
-    StudentDto update(StudentDto dto) {
-        LOGGER.debug("start methode update");
+    StudentDto update(@RequestBody StudentDto dto) {
+        LOGGER.debug("start method update dto : {} ",dto);
         return service.update(dto);
     }
 
-    @DeleteMapping("/{id}")
-    StudentDto delete(long id) {
-        LOGGER.debug("start methode delete");
+    @DeleteMapping("/{ids}")
+    boolean delete(@PathVariable("ids") long id) {
+        LOGGER.debug("start method delete id : {} ",id);
         return service.delete(id);
     }
 

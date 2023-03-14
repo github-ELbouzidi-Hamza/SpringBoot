@@ -27,35 +27,36 @@ public class StudentServiceImp implements StudentService{
 
 
     @Override
-    public StudentDto create(StudentDto dto) {
-        LOGGER.debug("start methode create");
-        StudentEntity entity = mapper.convertToEntity(dto);
-        StudentEntity respense = repository.create(entity);
-        StudentDto dtoResponse = mapper.convertToDto(respense);
+    public StudentDto save(StudentDto dto) {
+        LOGGER.debug("start method save dto : {} ",dto);
+        // StudentEntity entity = mapper.convertToEntity(dto);
+        // StudentEntity respense = repository.save(mapper.convertToEntity(dto));
+        StudentDto dtoResponse = mapper.convertToDto( repository.save(mapper.convertToEntity(dto)));
         return dtoResponse;
     }
 
     @Override
     public StudentDto update(StudentDto dto) {
-        LOGGER.debug("start methode update");
+        LOGGER.debug("start method update dto : {} ",dto);
         /* return mapper.convertToDto(repository.update(mapper.convertToEntity(dto))); */
-        StudentEntity entity = mapper.convertToEntity(dto);
-        StudentEntity respense = repository.update(entity);
-        StudentDto dtoResponse = mapper.convertToDto(respense);
+        // StudentEntity entity = mapper.convertToEntity(dto);
+        // StudentEntity respense = repository.save(mapper.convertToEntity(dto));
+        StudentDto dtoResponse = mapper.convertToDto(repository.save(mapper.convertToEntity(dto)));
         return dtoResponse;
     }
 
     @Override
-    public StudentDto delete(long id) {
-        LOGGER.debug("start methode delete");
-        return repository.delete(id);
+    public boolean delete(long id) {
+        LOGGER.debug("start method delete id : {} ",id);
+        repository.deleteById(id);
+        return true;
     }
 
     @Override
     public List<StudentDto> selectAll() {
         LOGGER.debug("start methode selectAll");
-        List<StudentEntity> entities = repository.selectAll();
-        List<StudentDto> dtos =mapper.convertToDtos(entities);
+        //List<StudentEntity> entities = repository.findAll();
+        List<StudentDto> dtos =mapper.convertToDtos(repository.findAll());
         return dtos;
     }
 }

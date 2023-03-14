@@ -1,5 +1,7 @@
 package ma.pfe.dto;
 
+import javax.persistence.GeneratedValue;
+
 public class StudentDto {
 
     private long id;
